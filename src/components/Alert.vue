@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-alert v-model="alerta" border="top" type="success" dark>
+    <v-alert v-model="alerta" border="top" :type="tipo" dark>
       Gana jugador {{ valor }}
     </v-alert>
   </div>
@@ -10,6 +10,9 @@
 export default {
   props: {
     valor: {
+      type: String,
+    },
+    tipo: {
       type: String,
     },
     mostrar: {

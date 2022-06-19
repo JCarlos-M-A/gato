@@ -19,7 +19,7 @@
       </div>
     </v-main>
 
-    <Alert :valor="alertaText" :mostrar="mostrar" />
+    <Alert :valor="alertaText" :mostrar="mostrar" :tipo="tipo" />
   </v-app>
 </template>
 
@@ -41,6 +41,8 @@ export default {
     turno: "X",
     alertaText: "",
     mostrar: false,
+    turnos: 0,
+    tipo: "success",
     botones: [
       {
         id: 1,
@@ -91,15 +93,31 @@ export default {
           this.turno = "X";
         }
       } else {
-        console.log("seas mamon qui ya tiraron");
+        this.mostrar = true;
+        this.alertaText = "-_-";
+        this.tipo = "info";
+        setTimeout(() => {
+          this.mostrar = false;
+        }, 2500);
       }
     },
     win(jugador) {
-      this.mostrar = true;
-      this.alertaText = jugador;
-      setTimeout(() => {
-        this.mostrar = false;
-      }, 2500);
+      if (jugador != "empate") {
+        this.mostrar = true;
+        this.alertaText = jugador;
+        setTimeout(() => {
+          this.mostrar = false;
+        }, 2500);
+      } else {
+        if (this.turnos == 9) {
+          this.mostrar = true;
+          this.alertaText = "Empate";
+          this.tipo = "info";
+          setTimeout(() => {
+            this.mostrar = false;
+          }, 2500);
+        }
+      }
     },
     checkWin(variale) {
       if (
@@ -157,7 +175,8 @@ export default {
                       this.botones[6].texto == variale
                     ) {
                       this.win(variale);
-                    }else{
+                    } else {
+                      this.turnos++;
                       this.win("empate");
                     }
                   }
