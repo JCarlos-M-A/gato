@@ -150,6 +150,7 @@ export default {
     win(jugador) {
       if (jugador != "empate") {
         this.mostrar = true;
+        this.tipo = "success";
         this.alertaText = "Gana jugador " + jugador;
         setTimeout(() => {
           this.mostrar = false;
