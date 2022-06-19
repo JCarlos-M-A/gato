@@ -17,6 +17,11 @@
           </v-btn>
         </div>
       </div>
+      <div>
+        <v-btn color="indigo" class="ma-2" outlined @click="reiniciar">
+          Reiniciar
+        </v-btn>
+      </div>
     </v-main>
 
     <Alert :valor="alertaText" :mostrar="mostrar" :tipo="tipo" />
@@ -83,6 +88,47 @@ export default {
     ],
   }),
   methods: {
+    reiniciar() {
+      this.botones = [
+        {
+          id: 1,
+          texto: "",
+        },
+        {
+          id: 2,
+          texto: "",
+        },
+        {
+          id: 3,
+          texto: "",
+        },
+        {
+          id: 4,
+          texto: "",
+        },
+        {
+          id: 5,
+          texto: "",
+        },
+        {
+          id: 6,
+          texto: "",
+        },
+        {
+          id: 7,
+          texto: "",
+        },
+        {
+          id: 8,
+          texto: "",
+        },
+        {
+          id: 9,
+          texto: "",
+        },
+      ];
+      this.turnos = 0;
+    },
     tira(boton) {
       if (boton.texto == "") {
         boton.texto = this.turno;
@@ -104,7 +150,7 @@ export default {
     win(jugador) {
       if (jugador != "empate") {
         this.mostrar = true;
-        this.alertaText = jugador;
+        this.alertaText = "Gana jugador " + jugador;
         setTimeout(() => {
           this.mostrar = false;
         }, 2500);

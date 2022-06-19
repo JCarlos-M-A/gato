@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-alert v-model="alerta" border="top" :type="tipo" dark>
-      Gana jugador {{ valor }}
+     {{ valor }}
     </v-alert>
   </div>
 </template>
